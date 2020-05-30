@@ -210,7 +210,8 @@ function sendEmail($messageid, $email, $hash, $htmlpref = 0, $rssitems = array()
 
     // make sure there are no newlines, otherwise they get turned into <br/>s
     $html['forwardform'] = ''; //sprintf('<form method="get" action="%s" name="forwardform" class="forwardform"><input type="hidden" name="uid" value="%s" /><input type="hidden" name="mid" value="%d" /><input type="hidden" name="p" value="forward" /><input type=text name="email" value="" class="forwardinput" /><input name="Send" type="submit" value="%s" class="forwardsubmit"/></form>',$url,$hash,$messageid,$GLOBALS['strForward']);
-    $text['signature'] = "\n\n-- powered by phpList, www.phplist.com --\n\n";
+#    $text['signature'] = "\n\n-- powered by phpList, www.phplist.com --\n\n";
+    $text['signature'] = "";
     $url = getConfig('preferencesurl');
     $sep = strpos($url, '?') === false ? '?' : '&';
     $html['preferences'] = sprintf('<a href="%s%suid=%s">%s</a> ', $url, htmlspecialchars($sep), $hash, $strThisLink);
@@ -266,7 +267,7 @@ function sendEmail($messageid, $email, $hash, $htmlpref = 0, $rssitems = array()
         // oops, accidentally became spyware, never intended that, so take it out again :-)
         $html['signature'] = preg_replace('/src=".*power-phplist.png"/', 'src="powerphplist.png"', $html['signature']);
     } else {
-        $html['signature'] = $PoweredByText;
+        $html['signature'] = ""; # $PoweredByText;
     }
 //  $content = $cached[$messageid]["htmlcontent"];
 
