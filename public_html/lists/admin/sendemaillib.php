@@ -421,7 +421,8 @@ function sendEmail($messageid, $email, $hash, $htmlpref = 0, $rssitems = array()
                 '<img src="'.$GLOBALS['public_scheme'].'://'.$website.$GLOBALS['pageroot'].'/ut.php?u='.$hash.'&amp;m='.$messageid.'" width="1" height="1" border="0" alt="" /></body>',
                 $htmlmessage);
         } else {
-            $htmlmessage .= '<img src="'.$GLOBALS['public_scheme'].'://'.$website.$GLOBALS['pageroot'].'/ut.php?u='.$hash.'&amp;m='.$messageid.'" width="1" height="1" border="0" alt="" />';
+//            $htmlmessage .= '<img src="'.$GLOBALS['public_scheme'].'://'.$website.$GLOBALS['pageroot'].'/ut.php?u='.$hash.'&amp;m='.$messageid.'" width="1" height="1" border="0" alt="" />';
+            $htmlmessage .= '';
         }
     } else {
         //# can't use str_replace or str_ireplace, because those replace all, and we only want to replace one
@@ -986,7 +987,7 @@ function addAttachments($msgid, &$mail, $type,$hash = '')
             return true;
         }
         if ($type == 'text') {
-            $mail->append_text($GLOBALS['strAttachmentIntro']."\n");
+//            $mail->append_text($GLOBALS['strAttachmentIntro']."\n");
         }
 
         while ($att = Sql_Fetch_array($req)) {
@@ -1065,7 +1066,7 @@ function addAttachments($msgid, &$mail, $type,$hash = '')
                         if (!empty($hash)) {
                             $viewurl .= '&uid='.$hash;
                         }
-                        $mail->append_text($att['description']."\n".$GLOBALS['strLocation'].': '.$viewurl."\n");
+//                        $mail->append_text($att['description']."\n".$GLOBALS['strLocation'].': '.$viewurl."\n");
                         break;
                 }
             }
